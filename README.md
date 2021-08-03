@@ -12,4 +12,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Notes
 
 1. The instant messaging works when the two clients are on their respective conversations.
-2. If you do not see the message, refresh the page.
+2. If you do not see the conversation, refresh the page.
