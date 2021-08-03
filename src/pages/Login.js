@@ -34,11 +34,13 @@ export default function Login() {
         justifyContent: 'center',
         alignItem: 'center',
         width: '400px',
-
         marginTop: '300px',
       }}
     >
       <Card.Body style={{ textAlign: 'center' }}>
+        <Card.Title>
+          <h1>Chat App using React and Firebase</h1>
+        </Card.Title>
         <Card.Title>Login</Card.Title>
         <Col>
           <Row as={Form} onSubmit={handleSubmit}>
@@ -52,7 +54,7 @@ export default function Login() {
               />
             </Form.Group>
             <Form.Group style={{ marginBottom: 10 }}>
-              <Form.Label>password</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
                 type='password'
                 required
@@ -73,7 +75,7 @@ export default function Login() {
       </Card.Body>
       <Card.Footer style={{ textAlign: 'center' }}>
         <p>
-          Need an Account?<Link to='/register'>Signup</Link>{' '}
+          Need an Account? <Link to='/register'>Signup</Link>{' '}
         </p>
         {message}
       </Card.Footer>

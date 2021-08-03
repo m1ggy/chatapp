@@ -55,13 +55,15 @@ export default function Register() {
         justifyContent: 'center',
         alignItem: 'center',
         width: '400px',
-        height: '350px',
         marginTop: '300px',
       }}
     >
       <Card.Body style={{ textAlign: 'center' }}>
-        <Card.Title>REgister</Card.Title>
         <Col>
+          <Card.Title>
+            <h1>Chat App using React and Firebase</h1>
+          </Card.Title>
+          <Card.Title>Register</Card.Title>
           <Row as={Form} onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
@@ -73,7 +75,7 @@ export default function Register() {
               />
             </Form.Group>
             <Form.Group style={{ marginBottom: 10 }}>
-              <Form.Label>password</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
                 type='password'
                 required
@@ -95,7 +97,7 @@ export default function Register() {
       </Card.Body>
       <Card.Footer style={{ textAlign: 'center' }}>
         <p>
-          Already have an Account?<Link to='/'>Login</Link>{' '}
+          Already have an Account? <Link to='/'>Login</Link>{' '}
         </p>
         {message}
       </Card.Footer>

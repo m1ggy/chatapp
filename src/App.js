@@ -22,6 +22,9 @@ function App() {
           </Switch>
         </Router>
       </AuthProvider>
+      <p style={{ position: 'absolute', bottom: 0, left: 0 }}>
+        Created by Miguel Buising{' '}
+      </p>
     </div>
   );
 }
