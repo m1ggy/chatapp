@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## instructions
 
-1. clone this repository using `https://github.com/m1ggy/chatapp.git`
-2. run `npm start`
-3. You're good to go! you can now chat with registered users.
+1. clone this repository using `git clone https://github.com/m1ggy/chatapp.git`
+2. cd to project directory
+3. run `npm start`
+4. You're good to go! Sign in or create an account to start chatting.
