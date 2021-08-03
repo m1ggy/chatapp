@@ -13,7 +13,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
           <Component {...props} />
         ) : (
           history.push({
-            pathname: '/login',
+            pathname: '/',
             message: 'Please log in to access this page.',
           })
         );

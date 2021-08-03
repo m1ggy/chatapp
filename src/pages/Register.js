@@ -1,26 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Col, Row, Card } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import { firestore } from '../firebase/firebase';
+import uniqid from 'uniqid';
 export default function Register() {
   const [creds, setCreds] = useState({
     email: '',
     password: '',
   });
-  const { loading, setLoading, signup } = useAuth();
+  const { signup, currentUser } = useAuth();
   const history = useHistory();
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(loading);
+    setLoading(true);
+    console.log(loading);
     signup(creds.email, creds.password)
       .then(() => {
-        history.push('/dashboard');
-        setMessage('Logged in');
+        const id = uniqid();
+        firestore
+          .collection('users')
+          .doc(id)
+          .set(
+            {
+              id,
+              email: creds.email,
+              password: creds.password,
+              channels: [],
+            },
+            { merge: true }
+          )
+          .then(() => {
+            history.push('/dashboard');
+          });
       })
       .catch((e) => {
-        console.log(e);
+        setLoading(false);
+        setMessage(e.message);
       });
   }
+
+  useEffect(() => {
+    if (currentUser) {
+      history.push('/dashboard');
+    }
+  }, [currentUser, history]);
   return (
     <Card
       style={{
@@ -28,7 +55,7 @@ export default function Register() {
         justifyContent: 'center',
         alignItem: 'center',
         width: '400px',
-        height: '300px',
+        height: '350px',
         marginTop: '300px',
       }}
     >
@@ -59,8 +86,9 @@ export default function Register() {
             <Button
               type='submit'
               style={{ marginTop: 50, width: `100px`, margin: `auto` }}
+              disabled={loading}
             >
-              Register
+              {loading ? 'Loading...' : 'Register'}
             </Button>
           </Row>
         </Col>

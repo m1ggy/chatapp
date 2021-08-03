@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Col, Row, Card } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
@@ -7,7 +7,7 @@ export default function Login() {
     email: '',
     password: '',
   });
-  const { loading, setLoading, login } = useAuth();
+  const { currentUser, login } = useAuth();
   const history = useHistory();
   const [message, setMessage] = useState('');
   function handleSubmit(e) {
@@ -21,6 +21,12 @@ export default function Login() {
         setMessage('Failed to login');
       });
   }
+
+  useEffect(() => {
+    if (currentUser) {
+      history.push('/dashboard');
+    }
+  }, [currentUser, history]);
   return (
     <Card
       style={{
